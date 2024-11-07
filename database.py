@@ -11,14 +11,15 @@ connection = mysql.connector.connect(
 )
 
 if connection.is_connected():
-    print("Connected")
+    print("Connected to database")
 else:
-    print("Not Connected")
+    print("Not Connected to database")
 
 def fetchUser(userId):
     cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM users WHERE id = %s", (userId,))
     return cursor.fetchone()
+
 def storeAttendance(userId):
     cursor = connection.cursor()
     query = "INSERT INTO attendances (id, user_id, status, description) VALUES (%s, %s, %s, %s)"
@@ -26,5 +27,8 @@ def storeAttendance(userId):
     cursor.execute(query, values)
     connection.commit()
 
-# user = fetchUser(1)
-# print(user['name']) 
+# user = fetchUser(53)
+# print(user['id'])
+# print(user['name'])
+
+storeAttendance(54)
