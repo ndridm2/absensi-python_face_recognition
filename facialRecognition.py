@@ -1,7 +1,5 @@
 import cv2
 import cv2.data
-import os
-import numpy as np
 from database import fetchUser, storeAttendance
 
 font = cv2.FONT_HERSHEY_COMPLEX
@@ -43,13 +41,13 @@ while True:
                 recognition = False
                 ask = True
             else:
-                cv2.putText(frame, "Apakah kamu", (30, 350), font, 1, (255, 255, 255))
-                cv2.putText(frame, username, (30, 385), font, 1, (255, 255, 255))
-                cv2.putText(frame, "tidak (x)", (30, 430), font, 1, (255, 255, 255))
-                cv2.putText(frame, "ya (enter)", (180, 430), font, 1, (255, 255, 255))
+                cv2.putText(frame, str('unknown'), (x+5, y+5), font, 1, (255, 255, 255))
 
     if(ask):
-        cv2.putText(frame, str('unknown'), (x+5, y+5), font, 1, (255, 255, 255))
+        cv2.putText(frame, "Apakah kamu", (30, 350), font, 1, (255, 255, 255))
+        cv2.putText(frame, username, (30, 385), font, 1, (255, 255, 255))
+        cv2.putText(frame, "no (x)", (30, 430), font, 1, (255, 255, 255))
+        cv2.putText(frame, "| yes (enter)", (145, 430), font, 1, (255, 255, 255))
 
     cv2.imshow('Face Recognition', frame)
 
@@ -58,6 +56,7 @@ while True:
         break
     elif(k == 120): #"X"
         recognition = True
+        ask = False
     elif(k == 13):
         storeAttendance(userId)
 

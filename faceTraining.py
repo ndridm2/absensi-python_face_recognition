@@ -19,6 +19,7 @@ def getImageAndLabels(path):
     dirs = os.listdir(path)
 
     for dir in dirs:
+
         fullPath = os.path.join(path, dir)
         images = [os.path.join(fullPath, f) for f in os.listdir(fullPath)]
 
@@ -28,6 +29,7 @@ def getImageAndLabels(path):
             imgNumpy = np.array(PILImg, 'uint8')
 
             faces = detector.detectMultiScale(imgNumpy)
+            
             for (x, y, w, h) in faces:
                 faceSamples.append(imgNumpy[y:y+h, x:x+w])
                 ids.append(int(dir))
