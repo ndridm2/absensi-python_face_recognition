@@ -36,11 +36,13 @@ def getImageAndLabels(path):
     
     return faceSamples, ids
 
-    
-faces, ids =  getImageAndLabels(path)
+def training():
+    faces, ids =  getImageAndLabels(path)
+    recognizer.train(faces, np.array(ids))
+    recognizer.save('trainer/trainer.yml')
 
-recognizer.train(faces, np.array(ids))
+# faces, ids =  getImageAndLabels(path)
+# recognizer.train(faces, np.array(ids))
+# recognizer.save('trainer/trainer.yml')
 
-recognizer.save('trainer/trainer.yml')
-
-print("\n [INFO] {0} faces trained. Exiting program".format(len(np.unique(ids))) )
+# print("\n [INFO] {0} faces trained. Exiting program".format(len(np.unique(ids))) )

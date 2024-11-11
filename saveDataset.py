@@ -1,7 +1,8 @@
 import cv2
 import cv2.data
 import os
-
+import sys
+import faceTraining
 
 # Pastikan haarcascade ada di direktori yang sama atau berikan path lengkap
 cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
@@ -16,7 +17,8 @@ cam.set(4, 480)  # tinggi video
 
 faceDetector = cv2.CascadeClassifier(cascade_path)
 
-faceId = input('\n Enter user id and press <return> ==> ')
+# faceId = input('\n Enter user id and press <return> ==> ')
+faceId = sys.argv[1]
 
 count = 0
 while True:
@@ -49,6 +51,11 @@ while True:
     elif count == 30:
         break
 
-print("\n [INFO] Exiting Program and cleanup stuff")
 cam.release()
+
+# training data
+faceTraining.training()
+
 cv2.destroyAllWindows()
+print("\n [INFO] Exiting Program and cleanup stuff")
+

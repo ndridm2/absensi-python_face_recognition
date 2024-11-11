@@ -22,7 +22,7 @@ def fetchUser(userId):
 
 def storeAttendance(userId):
     cursor = connection.cursor()
-    query = "INSERT INTO attendances (id, user_id, status, description) VALUES (%s, %s, %s, %s)"
+    query = "INSERT INTO attendances (id, user_id, status, description, created_at, updated_at) VALUES (%s, %s, %s, %s, NOW(), NOW())"
     values = (str(uuid.uuid4()), userId, 'attend', 'face recognition')
     cursor.execute(query, values)
     connection.commit()
