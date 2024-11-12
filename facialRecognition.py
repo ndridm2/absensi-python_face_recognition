@@ -14,7 +14,7 @@ notMe = []
 saved = True
 saving = False
 start = 0
-current_time = time.strftime('%d-%m-%Y %S:%M:%H')
+current_time = time.strftime('%d-%m-%Y %H:%M:%S')
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('trainer/trainer.yml')
