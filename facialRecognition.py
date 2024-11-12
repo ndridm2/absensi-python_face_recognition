@@ -67,10 +67,10 @@ while True:
             saving = False
 
     elif(ask):
-        cv2.putText(frame, "Apakah kamu", (30, 350), font, 1, (255, 255, 255))
-        cv2.putText(frame, username, (30, 385), font, 1, (255, 255, 255))
-        cv2.putText(frame, "no (x)", (30, 430), font, 1, (255, 255, 255))
-        cv2.putText(frame, "| yes (enter)", (145, 430), font, 1, (255, 255, 255))
+        cv2.putText(frame, "Apakah kamu?", (30, 30), font, 0.6, (255, 255, 255))
+        cv2.putText(frame, username, (30, 60), font, 0.6, (255, 255, 255))
+        cv2.putText(frame, "no (x)", (30, 90), font, 0.5, (0, 0, 255))
+        cv2.putText(frame, "| yes (enter)", (100, 90), font, 0.5, (0, 255, 0))
 
     cv2.imshow('Face Recognition', frame)
 
