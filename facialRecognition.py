@@ -42,7 +42,7 @@ while True:
                 userId = user['id']
                 username = user['name']
                 
-                cv2.putText(frame, str(username) + str(userId), (x+5, y+5), font, 1, (255, 255, 255))
+                cv2.putText(frame, str(username), (x+5, y+5), font, 1, (255, 255, 255))
 
                 if userId not in notMe:
                     recognition = False
