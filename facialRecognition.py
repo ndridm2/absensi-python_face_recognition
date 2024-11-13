@@ -38,6 +38,8 @@ window_height = 480
 x_offset = int((screen_width - window_width) / 2)
 y_offset = 0
 
+enter_pressed_time = None  
+
 while True:
     ret, frame = cam.read()
 
@@ -89,16 +91,22 @@ while True:
     cv2.moveWindow('Face Recognition', x_offset, y_offset)  # Mengatur posisi jendela
 
     k = cv2.waitKey(10)
-    if(k == 27): # esc
+    if k == 27: # esc
         break
-    elif(k == 120): # x
+    elif k == 120: # x
         notMe.append(userId)
         recognition = True
         ask = False
-    elif(k == 13): # enter
-        saved = True
-        saving = True
-        start = int(time.time()) + 2 # 1:05:30 >  1:05:32
+    elif k == 13: # enter
+            if enter_pressed_time is None:
+                enter_pressed_time = time.time()
+                saved = True
+                saving = True
+                start = int(time.time()) + 2 # 1:05:30 >  1:05:32
+    
+    # Check if 1 minute has passed after Enter was pressed
+    if enter_pressed_time is not None and (time.time() - enter_pressed_time) >= 2:
+        break
 
 cam.release()
 print("[INFO] Exit")
