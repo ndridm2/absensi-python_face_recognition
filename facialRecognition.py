@@ -54,16 +54,14 @@ while True:
                 user = fetchUser(id)
                 userId = user['id']
                 username = user['name']
-                text_x = x + 5
-                text_y = y - 10
 
-                cv2.putText(frame, str(username), (text_x, text_y), font, 1, (255, 255, 255))
+                cv2.putText(frame, str(username), (x+5, y-10), font, 1, (255, 255, 255))
 
                 if userId not in notMe:
                     recognition = False
                     ask = True
             else:
-                cv2.putText(frame, str('unknown'), (text_x, text_y), font, 1, (255, 255, 255))
+                cv2.putText(frame, str('unknown'), (x+5, y-10), font, 1, (255, 255, 255))
 
     if(saving):
         cv2.putText(frame, username + ' Attendaces', (30, 420), font, 0.8, (0, 255, 0))
